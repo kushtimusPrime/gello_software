@@ -120,8 +120,9 @@ def main(args):
                     [0, -90, 90, -90, -90, 0, 0]
                 )  # Change this to your own reset joints
             else:
-                reset_joints = args.start_joints
-            agent = GelloAgent(port=gello_port, start_joints=args.start_joints)
+                reset_joints = np.deg2rad(np.array(args.start_joints)) #args.start_joints
+
+            agent = GelloAgent(port=gello_port, start_joints=np.deg2rad(np.array(args.start_joints)))#args.start_joints)
             curr_joints = env.get_obs()["joint_positions"]
             if reset_joints.shape == curr_joints.shape:
                 max_delta = (np.abs(curr_joints - reset_joints)).max()
