@@ -27,3 +27,5 @@ outputs/*
 # vim
 *.swp
 MUJOCO_LOG.TXT
+third_party/DynamixelSDK
+arena.xml
