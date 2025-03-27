@@ -66,14 +66,12 @@ class URRobot(Robot):
             pos = robot_joints
         return pos
 
-    def command_joint_state(self, joint_state: np.ndarray) -> None:
+    def command_joint_state(self, joint_state: np.ndarray, velocity: float = .5, acceleration: float = .5) -> None:
         """Command the leader robot to a given state.
 
         Args:
             joint_state (np.ndarray): The state to command the leader robot to.
         """
-        velocity = 0.5
-        acceleration = 0.5
         dt = 1.0 / 500  # 2ms
         lookahead_time = 0.2
         gain = 100
