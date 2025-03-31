@@ -63,7 +63,7 @@ class URRobot(Robot):
             gripper_pos = self._get_gripper_pos()
             pos = np.append(robot_joints, gripper_pos)
         else:
-            pos = robot_joints
+            pos = np.array(robot_joints)
         return pos
 
     def command_joint_state(self, joint_state: np.ndarray, velocity: float = .5, acceleration: float = .5) -> None:
