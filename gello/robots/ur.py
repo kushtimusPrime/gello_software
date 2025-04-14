@@ -66,7 +66,7 @@ class URRobot(Robot):
             pos = np.array(robot_joints)
         return pos
 
-    def command_joint_state(self, joint_state: np.ndarray, velocity: float = .5, acceleration: float = .5,dt: float = 1.0 / 500,lookahead_time: float = 0.2,gain: float = 100) -> None:
+    def command_joint_state(self, joint_state: np.ndarray, velocity: float = .5, acceleration: float = 1,dt: float = 1.0 / 500,lookahead_time: float = 0.2,gain: float = 150) -> None:
         """Command the leader robot to a given state.
 
         Args:
@@ -80,7 +80,7 @@ class URRobot(Robot):
         )
         if self._use_gripper:
             gripper_pos = joint_state[-1] * 255
-            self.gripper.move(gripper_pos, 255, 10)
+            self.gripper.move(gripper_pos, 255, 5)
         self.robot.waitPeriod(t_start)
 
     def freedrive_enabled(self) -> bool:
